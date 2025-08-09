@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Asad Ahsan | Portfolio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background: #f5f3ff;
+            color: #3b0764;
+        }
+        header {
+            background: #f5f3ff;
+            color: #7c3aed;
+            padding: 2rem 0 1rem 0;
+            text-align: center;
+            border-bottom: 1px solid #ede9fe;
+        }
+        nav {
+            margin-top: 1rem;
+        }
+        nav a {
+            color: #7c3aed;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: #a78bfa;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: #ede9fe;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(124, 58, 237, 0.08);
+        }
+        section {
+            margin-bottom: 2rem;
+        }
+        h2 {
+            color: #7c3aed;
+            border-bottom: 2px solid #c4b5fd;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .project-card {
+            background: #faf5ff;
+            border: 1px solid #e9d5ff;
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 1px 8px rgba(124,58,237,0.05);
+        }
+        .project-card h3 {
+            margin-top: 0;
+            color: #7c3aed;
+            font-weight: 600;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .skill {
+            background: #c4b5fd;
+            color: #3b0764;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+        .contact-links a {
+            margin-right: 1rem;
+            color: #7c3aed;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-weight: 500;
+        }
+        .contact-links a:hover {
+            color: #a78bfa;
+        }
+        .education, .experience, .achievements {
+            padding: 1rem;
+            background: #faf5ff;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid #e9d5ff;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #f5f3ff;
+            color: #7c3aed;
+            margin-top: 2rem;
+            border-top: 1px solid #ede9fe;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+            .projects {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Asad Ahsan</h1>
+        <p>Web Developer | Programmer | Learner</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                Hello! I'm Asad Ahsan, a passionate web developer and programmer with experience in building modern, responsive websites and web applications. I enjoy working on end-to-end products that solve real-world problems and have a keen interest in data analysis, machine learning, and digital systems.
+            </p>
+        </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-list">
+                <span class="skill">Python</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">React</span>
+                <span class="skill">Node.js</span>
+                <span class="skill">Verilog</span>
+                <span class="skill">LangChain</span>
+                <span class="skill">Data Analysis</span>
+                <span class="skill">Machine Learning</span>
+            </div>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <h3>Data-Driven Tender Tracker</h3>
+                    <p>Automated tender tracking system using Python and web scraping. Helps organizations monitor and analyze tenders efficiently.</p>
+                    <a href="https://github.com/g1gasad/Data-Driven-Tender-Tracker.git" target="_blank">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h3>Langchain Projects</h3>
+                    <p>Collection of projects using LangChain for building LLM-powered applications, including chatbots and data pipelines.</p>
+                    <a href="https://github.com/g1gasad/Langchain-Projects.git" target="_blank">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h3>MIPS Processor Verilog</h3>
+                    <p>Designed and implemented a MIPS processor using Verilog. Focused on digital logic, pipelining, and simulation.</p>
+                    <a href="https://github.com/g1gasad/mips-processor-verilog" target="_blank">View Project</a>
+                </div>
+            </div>
+        </section>
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education">
+                <strong>Bachelor of Technology in Computer Science</strong><br>
+                XYZ University, 2021 - 2025
+            </div>
+        </section>
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="experience">
+                <strong>Software Engineering Intern</strong> - ABC Corp (Jun 2024 - Aug 2024)<br>
+                <ul>
+                    <li>Developed web applications using React and Node.js</li>
+                    <li>Worked on data analysis and visualization tasks</li>
+                    <li>Collaborated with cross-functional teams</li>
+                </ul>
+                <strong>Research Assistant</strong> - XYZ University (Jan 2023 - May 2023)<br>
+                <ul>
+                    <li>Built machine learning models for academic research</li>
+                    <li>Published findings in university journal</li>
+                </ul>
+            </div>
+        </section>
+        <section id="achievements">
+            <h2>Achievements</h2>
+            <div class="achievements">
+                <ul>
+                    <li>Winner, Hackathon 2024 - Built an AI-powered chatbot</li>
+                    <li>Certified in Machine Learning by Coursera</li>
+                    <li>Dean's List, XYZ University (2022, 2023)</li>
+                </ul>
+            </div>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-links">
+                <a href="mailto:dasadahsan@gmail.com">dasadahsan@gmail.com</a>
+                <a href="http://www.linkedin.com/in/asad-ahsan04" target="_blank">LinkedIn</a>
+                <a href="https://github.com/g1gasad" target="_blank">GitHub</a>
+            </div>
+        </section>
+    </div>
+    <footer>
+        &copy; 2024 Asad Ahsan. All rights reserved.
+    </footer>
+</body>
+</html>
