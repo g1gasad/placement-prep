@@ -143,34 +143,62 @@ void print19(int n){
     }
 }
 void print20(int n){
-    for(int i=1; i<=2*n; i++){
+    for(int i=1; i<2*n; i++){
         if(i<=n){
-            for(int j=1; j<=n-i+1; j++){
+            for(int j=1; j<=i; j++){
                 printf("*");
             }
-            for(int space=1; space<2*i-1; space++){
-                printf(" ");
+            for(int space=1; space<=2*(n-i); space++){
+                printf("-");
             }
-            for(int j=1; j<=n-i+1; j++){
+            for(int j=1; j<=i; j++){
                 printf("*");
             }
         }
         else{
-            for(int j=1; j<=i-n; j++){
+            for(int j=1; j<=2*n-i; j++){
                 printf("*");
             }
-            for(int space=1; space<=2*(2*n-i); space++){
-                printf(" ");
+            for(int space=1; space<=2*(i-n); space++){
+                printf("-");
             }
-            for(int j=1; j<=i-n; j++){
+            for(int j=1; j<=2*n-i; j++){
                 printf("*");
             }
         }
         printf("\n");
     }
 }
+void print21(int n){
+    for(int i=1; i<=n; i++){
+        for(int j=1; j<=n; j++){
+            if((i==1) || (i==n) || (j==1) || (j==n)){
+                printf("*");
+            }
+            else{
+                printf(" ");
+            }
+        }
+        printf("\n");
+    }
+}
+void print22(int n){
+    #define MIN(a, b) (((a) < (b)) ? (a) : (b))
+    for(int i=0; i<2*n-1; i++){
+        for(int j=0; j<2*n-1; j++){
+            int top = i;
+            int left = j;
+            int right = 2*n-2-j;
+            int bottom = 2*n-2-i;
+            int val = MIN(MIN(top, bottom), MIN(left, right));
+            printf("%d ", n-val);
+        }
+        printf("\n");
+    }
+}
+
 int main(){
-    int num = 5;
-    print19(num);
+    int num = 6;
+    print22(num);
     return 0;
 }
