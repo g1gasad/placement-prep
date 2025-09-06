@@ -83,12 +83,94 @@ void print16(int n){
         printf("\n");
     }
 }
-
-
-
-
+void print17(int n){
+    for(int i=1; i<=n; i++){
+        char ch = 'A';
+        for(int sp=1; sp<=n-i; sp++){
+            printf(" ");
+        }
+        for(int cp=1; cp<=2*i-1; cp++){
+            if(cp<i){
+                printf("%c", ch++);
+                // charVal++;
+            }
+            else{
+                printf("%c", ch--);
+                }
+            }
+        for(int sp2=1; sp2<=n-i; sp2++){
+            printf(" ");
+        }
+        printf("\n");
+    }
+}
+void print18(int n){
+    char ch;
+    for(int i=1; i<=n; i++){
+        ch = 'A';
+        ch += n-i;
+        for(int j=1; j<=i; j++){
+            printf("%c", ch++);
+        }
+        printf("\n");
+    }
+}
+void print19(int n){
+    for(int i=1; i<=2*n; i++){
+        if(i<=n){
+            for(int j=1; j<=n-i+1; j++){
+                printf("*");
+            }
+            for(int space=1; space<2*i-1; space++){
+                printf(" ");
+            }
+            for(int j=1; j<=n-i+1; j++){
+                printf("*");
+            }
+        }
+        else{
+            for(int j=1; j<=i-n; j++){
+                printf("*");
+            }
+            for(int space=1; space<=2*(2*n-i); space++){
+                printf(" ");
+            }
+            for(int j=1; j<=i-n; j++){
+                printf("*");
+            }
+        }
+        printf("\n");
+    }
+}
+void print20(int n){
+    for(int i=1; i<=2*n; i++){
+        if(i<=n){
+            for(int j=1; j<=n-i+1; j++){
+                printf("*");
+            }
+            for(int space=1; space<2*i-1; space++){
+                printf(" ");
+            }
+            for(int j=1; j<=n-i+1; j++){
+                printf("*");
+            }
+        }
+        else{
+            for(int j=1; j<=i-n; j++){
+                printf("*");
+            }
+            for(int space=1; space<=2*(2*n-i); space++){
+                printf(" ");
+            }
+            for(int j=1; j<=i-n; j++){
+                printf("*");
+            }
+        }
+        printf("\n");
+    }
+}
 int main(){
     int num = 5;
-    print16(num);
+    print19(num);
     return 0;
 }
