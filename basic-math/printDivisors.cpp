@@ -1,21 +1,32 @@
+#include <bits/stdc++.h>
 #include <iostream>
 #include <cmath>
 using namespace std;
 
-int main(){
-    int x=36;
-
-    for(int i=1; i<=sqrt(x); i++){
+void printDivisors(int x){
+    vector<int> ls;
+    // O(sqrt(n))
+    for(int i=1; i*i<=x; i++){
         if(x%i==0){
-            cout<<i<<endl;
+            ls.push_back(i);
+            // cout<<i<<endl;
             if(i != (x/i)){
-                cout<<x/i<<endl;
+                ls.push_back(x/i);
+                // cout<<x/i<<endl;
             }
         }
     }
-
-
-    // cout<<"yo ssup"<<endl;
+    // O(n * log(n))
+    sort(ls.begin(), ls.end());
+    // O(n)
+    for(auto it : ls) cout << it << " ";
+}
+// O(sqrt(n)) + O(nlogn) + O(n) = ?
+int main(){
+    int n;
+    cout << "Enter a num: ";
+    cin >> n;
+    printDivisors(n);
 
     return 0;
 }
