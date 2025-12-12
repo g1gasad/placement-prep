@@ -5,6 +5,7 @@ void print(int arr[], int n){
         cout << arr[i] << " ";
     }
 };
+
 int main() {
     int n=10;
     int arr[] = {1, 2, 3, 1, 1, 6, 3, 2, 5, 1};
@@ -12,7 +13,7 @@ int main() {
     for(int i=0; i<n; i++){
         hasharr[arr[i]]++;
     }
-    print(hasharr, n);
+    print(hasharr, n);  
     
     return 0;
 }
