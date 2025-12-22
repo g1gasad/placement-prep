@@ -2,7 +2,8 @@
 using namespace std;
 int appearsOnce(vector<int> &arr){
     int n=arr.size();
-    int hasharr[n]={0};
+    map <long long, int> mpp;
+    int hasharr[n+1]={0};
     for(int i=0; i<n; i++){
         hasharr[arr[i]]++;
     }

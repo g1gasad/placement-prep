@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
+// another solution to this is simply subtract arr sum from
+// summation of n
 void findMissing(vector<int> arr, int n){
     int i=0;
     int k=1;
