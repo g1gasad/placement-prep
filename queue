@@ -1,0 +1,8 @@
+class QueueEx{
+    int a;
+    int front, rear, count, capacity;
+public:
+     QueueEx(int capacity){
+        
+}
+};
