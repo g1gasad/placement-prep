@@ -2,19 +2,26 @@
 using namespace std;
 class Solution {
 public:
-    int singleNumber(vector<int>& nums) {
-        int ans=0;
-        int n=nums.size();
-        for(int bit=0; bit<32; bit++){
-            int countOnes=0;
-            for(int i=0; i<n; i++){
-                // printf("%d - %d - ", nums[i], bit);
-                if(nums[i] & (1 << bit)) countOnes++;
-                // cout << countOnes << endl;
-            }
-            if(countOnes%3!=0) ans=ans + pow(2, bit);
+    // will work only with positive nums
+    // int singleNumber(vector<int>& nums) {
+    //     int ans=0;
+    //     int n=nums.size();
+    //     for(int bit=0; bit<32; bit++){
+    //         int countOnes=0;
+    //         for(int i=0; i<n; i++){
+    //             if(nums[i] & (1 << bit)) countOnes++;
+    //         }
+    //         if(countOnes%3!=0) ans=ans + pow(2, bit);
+    //     }
+    //     return ans;
+    // }
+    int singleNumber(vector<int> &nums){
+        int ones=0, twos=0, n=nums.size();
+        for(int i=0; i<n; i++){
+            ones = (ones ^ nums[i]) & (~twos);
+            twos = (twos ^ nums[i]) & (~ones);
         }
-        return ans;
+        return ones;
     }
 };
 int main() {
