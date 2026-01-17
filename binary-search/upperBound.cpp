@@ -5,7 +5,7 @@ int upperBound(vector<int> &nums, int target, int n){
     int ans=n;
     while(low <= high){
         int mid = (low + high) / 2;
-        if(nums[mid] <= target){
+        if(nums[mid] > target){
             low=mid+1;
             ans=mid;
         }
@@ -17,7 +17,7 @@ int upperBound(vector<int> &nums, int target, int n){
 }
 
 int main() {
-    vector<int> nums={3, 5, 7, 15, 19, 31};
+    vector<int> nums={2,4,6,7};
     int n=nums.size();
     int target=20;
     int ans=upperBound(nums, target, n);
