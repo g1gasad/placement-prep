@@ -1,0 +1,56 @@
+OrderID,Category,Item,Quantity,UnitPrice,Total_Price
+101,Dairy,Milk (1L),2,1.5,3.0
+102,Bakery,Sourdough Bread,1,3.5,3.5
+103,Fruits,Apples (1kg),1,4.0,4.0
+104,Vegetables,Broccoli,2,2.5,5.0
+105,Beverages,Orange Juice,1,5.0,5.0
+106,Snacks,Potato Chips,3,1.8,5.4
+107,Dairy,Cheese Block,1,6.0,6.0
+108,Fruits,Bananas (Bunch),1,2.0,2.0
+109,Bakery,Croissants (Pack),1,5.5,5.5
+110,Beverages,Coffee Beans,1,12.0,12.0
+111,Snacks,Chocolate Bar,5,1.2,6.0
+112,Vegetables,Spinach,1,2.0,2.0
+113,Dairy,Yogurt (6-pack),2,3.0,6.0
+114,Fruits,Grapes (500g),1,3.5,3.5
+115,Bakery,Bagels (Pack),1,4.0,4.0
+116,Beverages,Green Tea,1,4.5,4.5
+117,Snacks,Trail Mix,2,5.0,10.0
+118,Dairy,Butter,1,3.2,3.2
+119,Fruits,Oranges (1kg),1,3.8,3.8
+120,Vegetables,Carrots (1kg),1,1.5,1.5
+121,Bakery,Muffins,2,2.5,5.0
+122,Beverages,Soda (6-pack),1,4.0,4.0
+123,Snacks,Popcorn,2,2.0,4.0
+124,Dairy,Cream Cheese,1,2.8,2.8
+125,Fruits,Strawberries,2,4.0,8.0
+126,Vegetables,Potatoes (2kg),1,3.0,3.0
+127,Bakery,Whole Wheat Bread,1,2.5,2.5
+128,Beverages,Water (12-pack),1,6.0,6.0
+129,Snacks,Pretzels,1,3.0,3.0
+130,Dairy,Milk (1L),4,1.5,6.0
+131,Fruits,Apples (1kg),2,4.0,8.0
+132,Vegetables,Onions (1kg),1,1.8,1.8
+133,Bakery,Donuts (6-pack),1,5.0,5.0
+134,Beverages,Energy Drink,4,2.5,10.0
+135,Snacks,Cookies,2,3.5,7.0
+136,Dairy,Eggs (12-pack),2,3.0,6.0
+137,Fruits,Pineapple,1,4.5,4.5
+138,Vegetables,Tomatoes (1kg),1,2.5,2.5
+139,Bakery,Baguette,2,2.0,4.0
+140,Beverages,Iced Tea,2,2.5,5.0
+141,Snacks,Granola Bars,1,4.0,4.0
+142,Dairy,Almond Milk,2,3.0,6.0
+143,Fruits,Watermelon,1,5.5,5.5
+144,Vegetables,Peppers,3,1.5,4.5
+145,Bakery,Scones,2,2.8,5.6
+146,Beverages,Lemonade,1,3.5,3.5
+147,Snacks,Crackers,2,2.5,5.0
+148,Dairy,Cheddar Slices,1,4.0,4.0
+149,Fruits,Mangoes,3,2.5,7.5
+150,Vegetables,Cucumber,2,1.2,2.4
+151,Dairy,Gourmet Cheese,1,9.0,9.0
+152,Snacks,Family Pack Chips,2,4.5,9.0
+153,Beverages,Premium Juice (2L),2,4.5,9.0
+154,Bakery,Specialty Cake,1,9.0,9.0
+155,Fruits,Organic Berries,3,3.0,9.0
