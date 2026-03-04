@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asad Ahsan - Interactive Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Chosen Palette: Slate & Indigo (Warm neutrals with professional tech accents) -->
+    <!-- Application Structure Plan: A single-page dashboard designed to transform a static CV into an explorable narrative. The structure flows from high-level impact (KPIs) to detailed technical competencies (Skills chart) and granular professional/project achievements (Interactive Tabs). This dashboard approach was chosen to allow recruiters to immediately grasp key metrics and then non-linearly explore the areas most relevant to the role they are hiring for. -->
+    <!-- Visualization & Content Choices: 
+         1. Hero KPIs -> Goal: Inform -> Method: Dynamic CSS numbers -> Justification: High impact immediate metrics -> No SVG.
+         2. Skills Matrix -> Goal: Compare -> Method: Chart.js Radar Chart -> Justification: Visualizes broad competency across domains -> Chart.js.
+         3. Automation Impact -> Goal: Change/Compare -> Method: Chart.js Bar Chart -> Justification: Shows manual vs automated time saved -> Chart.js.
+         4. Project Details -> Goal: Organize & Inform -> Method: Interactive Tabs & HTML/CSS blocks + Chart.js -> Justification: Groups dense project info logically -> JS/Vanilla.
+         Confirming NO SVG/Mermaid used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #0f172a;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .tab-btn.active {
+            border-bottom: 2px solid #4f46e5;
+            color: #4f46e5;
+            font-weight: 600;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-xl font-bold text-indigo-600">&#x1F4BB; Asad Ahsan</div>
+            <div class="space-x-4 text-sm font-medium">
+                <a href="#summary" class="hover:text-indigo-600 transition">Summary</a>
+                <a href="#experience" class="hover:text-indigo-600 transition">Experience</a>
+                <a href="#projects" class="hover:text-indigo-600 transition">Projects</a>
+                <a href="#education" class="hover:text-indigo-600 transition">Education</a>
+            </div>
+        </div>
+    </nav>
+
+    <header id="summary" class="max-w-6xl mx-auto px-4 py-12 md:py-20">
+        <p class="text-lg text-slate-600 mb-2 font-semibold">Welcome to the interactive portfolio of</p>
+        <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
+            Asad Ahsan
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-light text-indigo-600 mb-6">Data Scientist & ML Engineer Intern</h2>
+        
+        <p class="text-lg text-slate-700 max-w-3xl leading-relaxed mb-8">
+            Electronics & Computer Science student with strong expertise in Python, SQL, and Deep Learning. Proven track record in developing automated data pipelines that reduce manual effort and building high-accuracy CNN models for complex decision-making. Skilled in bridging the gap between hardware architecture (FPGA/Verilog) and software-driven AI solutions.
+        </p>
+
+        <div class="flex gap-4 mb-12">
+            <a href="mailto:asadahsan2245@gmail.com" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition shadow-md">&#x2709; Email Me</a>
+            <span class="px-6 py-2 bg-white text-slate-700 border border-slate-200 rounded-lg shadow-sm">&#x1F4DE; +91 7620219923</span>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center hover:shadow-md transition">
+                <div class="text-3xl font-bold text-indigo-600 mb-1">8.67</div>
+                <div class="text-sm text-slate-500 uppercase tracking-wide">Current CGPA</div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center hover:shadow-md transition">
+                <div class="text-3xl font-bold text-indigo-600 mb-1">40K+</div>
+                <div class="text-sm text-slate-500 uppercase tracking-wide">Rows Automated</div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center hover:shadow-md transition">
+                <div class="text-3xl font-bold text-indigo-600 mb-1">81.2%</div>
+                <div class="text-sm text-slate-500 uppercase tracking-wide">CNN Top-5 Accuracy</div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center hover:shadow-md transition">
+                <div class="text-3xl font-bold text-indigo-600 mb-1">20+ hrs</div>
+                <div class="text-sm text-slate-500 uppercase tracking-wide">Saved Per Week</div>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-white border-y border-slate-200 py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-indigo-500">&#x2699;</span> Technical Competencies
+            </h3>
+            <p class="text-slate-600 mb-8 max-w-4xl">
+                This section provides a quantitative overview of my technical skill distribution. The interactive radar chart visualizes proficiency across core domains, allowing you to gauge my breadth of knowledge across Data Science, Software Engineering, Cloud Infrastructure, and Hardware architecture. Hover over the points to see specific technologies associated with each domain.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="chart-container">
+                    <canvas id="skillsChart"></canvas>
+                </div>
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="font-semibold text-slate-800 mb-2 border-b pb-1">Programming Languages</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">Python (Expert)</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">SQL (Oracle)</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">C++ / C</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">SystemVerilog / Assembly</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-slate-800 mb-2 border-b pb-1">AI/ML & Analytics Frameworks</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-sm">PyTorch</span>
+                            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-sm">TensorFlow</span>
+                            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-sm">Scikit-Learn</span>
+                            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-sm">Pandas / NumPy</span>
+                            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-sm">Power BI / Tableau</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-slate-800 mb-2 border-b pb-1">Hardware & Cloud</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">AMD Vivado</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">Xilinx Artix-7 FPGA</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">GCP / AWS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-indigo-500">&#x1F4BC;</span> Professional Experience
+            </h3>
+            <p class="text-slate-600 mb-8 max-w-4xl">
+                This section details my industry experience as a Data Analyst Intern. You will find a breakdown of my responsibilities and a visualization demonstrating the direct business impact of my automation initiatives. The chart specifically contrasts the time spent on manual data processes before and after my interventions, emphasizing efficiency gains.
+            </p>
+
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="p-8 border-b border-slate-100">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h4 class="text-xl font-bold text-slate-900">Data Analyst Intern</h4>
+                            <div class="text-indigo-600 font-medium">GEOsystems Research & Consultants Pvt. Ltd.</div>
+                        </div>
+                        <div class="text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full">July 2023 – May 2024</div>
+                    </div>
+                    
+                    <ul class="list-none space-y-3 mt-6 text-slate-700">
+                        <li class="flex items-start gap-2">
+                            <span class="text-indigo-500 mt-1">&#x2713;</span>
+                            <span>Developed a Python-based automated program managing <strong>40,000+ database rows</strong>, reducing manual staff effort by <strong>10%</strong> and improving data integrity.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-indigo-500 mt-1">&#x2713;</span>
+                            <span>Engineered a robust web scraper using <strong>Beautiful Soup</strong> to capture <strong>1,000+ new tender data points daily</strong>, saving the team <strong>20+ hours per week</strong>.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-indigo-500 mt-1">&#x2713;</span>
+                            <span>Designed and deployed real-time <strong>Power BI dashboards</strong> to visualize lead generation trends, directly supporting executive business decisions.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-indigo-500 mt-1">&#x2713;</span>
+                            <span>Optimized data retrieval processes using <strong>SQL</strong>, cutting down query response times for cross-functional reporting by 15%.</span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">Technologies Used</span>
+                        <div class="text-sm text-slate-600 italic">Python, SQL, Power BI, Google Cloud, Beautiful Soup, Pandas</div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-8">
+                    <h5 class="font-semibold text-center mb-4 text-slate-700">Impact Visualization: Weekly Manual Hours Reduced</h5>
+                    <div class="chart-container">
+                        <canvas id="impactChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-16 bg-white border-y border-slate-200">
+        <div class="max-w-6xl mx-auto px-4">
+            <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-indigo-500">&#x1F680;</span> Key Projects Explorer
+            </h3>
+            <p class="text-slate-600 mb-8 max-w-4xl">
+                Here you can interactively explore my primary academic and personal projects. Select a project tab to dynamically load its details, technologies utilized, and a corresponding data visualization or structural breakdown. This setup is designed to organize dense technical information into digestible, context-specific views.
+            </p>
+
+            <div class="flex flex-wrap border-b border-slate-200 mb-8" id="project-tabs">
+                <button class="tab-btn active px-6 py-3 text-slate-600 font-medium hover:text-indigo-600 transition" data-target="chess-project">Chess CNN Engine</button>
+                <button class="tab-btn px-6 py-3 text-slate-600 font-medium hover:text-indigo-600 transition" data-target="mips-project">MIPS 32-bit FPGA</button>
+                <button class="tab-btn px-6 py-3 text-slate-600 font-medium hover:text-indigo-600 transition" data-target="tender-project">Tender Tracker</button>
+            </div>
+
+            <div id="project-content-area" class="min-h-[400px]">
+                
+                <div id="chess-project" class="project-pane fade-in grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-1">Chess Move Prediction Engine (CNN)</h4>
+                        <div class="text-sm text-slate-500 mb-4">Dec 2023 – Feb 2024</div>
+                        <ul class="space-y-3 text-slate-700">
+                            <li class="flex items-start gap-2"><span class="text-indigo-500 mt-1">&#x25B8;</span><span>Architected a two-layer <strong>CNN (Conv2D > FC)</strong> to classify optimal moves based on static board positions from <strong>50,000+ professional games</strong>.</span></li>
+                            <li class="flex items-start gap-2"><span class="text-indigo-500 mt-1">&#x25B8;</span><span>Engineered a custom <strong>13-channel 8x8 matrix</strong> to encode piece positions and legal move destination squares, improving feature extraction.</span></li>
+                            <li class="flex items-start gap-2"><span class="text-indigo-500 mt-1">&#x25B8;</span><span>Achieved <strong>48.7% Top-1 Accuracy</strong> and <strong>81.2% Top-5 Accuracy</strong> on a dataset of <strong>240,000 board-move pairs</strong>.</span></li>
+                        </ul>
+                        <div class="mt-6 p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Stack</span>
+                            <span class="text-sm text-slate-700">Python, PyTorch, NumPy, Chess PGN Library</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-center bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                        <h5 class="text-center font-semibold text-slate-700 mb-2">Model Accuracy vs Baseline</h5>
+                        <div class="chart-container">
+                            <canvas id="chessChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="mips-project" class="project-pane hidden grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-1">MIPS 32-bit Processor on FPGA</h4>
+                        <div class="text-sm text-slate-500 mb-4">April 2024 – June 2024</div>
+                        <ul class="space-y-3 text-slate-700">
+                            <li class="flex items-start gap-2"><span class="text-indigo-500 mt-1">&#x25B8;</span><span>Designed a 32-bit MIPS processor supporting R, I, and J-type instructions using <strong>Verilog HDL</strong> in AMD Vivado.</span></li>
+                            <li class="flex items-start gap-2"><span class="text-indigo-500 mt-1">&#x25B8;</span><span>Successfully synthesized and realized the architecture on a <strong>Xilinx Artix-7 (Nexys 4) FPGA</strong>.</span></li>
+                            <li class="flex items-start gap-2"><span class="text-indigo-500 mt-1">&#x25B8;</span><span>Verified functional blocks via hardware testbenches ensuring accurate instruction execution mapping.</span></li>
+                        </ul>
+                        <div class="mt-6 p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Stack</span>
+                            <span class="text-sm text-slate-700">Verilog, Vivado, Xilinx Artix-7, FPGA Hardware</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-center items-center bg-slate-50 p-6 rounded-xl border border-slate-200">
+                        <h5 class="font-semibold text-slate-700 mb-6">Processor Architecture Concept</h5>
+                        <div class="w-full max-w-sm grid grid-cols-2 gap-4 text-center">
+                            <div class="col-span-2 bg-indigo-600 text-white py-3 rounded shadow">Control Unit</div>
+                            <div class="bg-white border-2 border-indigo-200 py-6 rounded shadow flex items-center justify-center font-bold text-indigo-800">ALU</div>
+                            <div class="bg-white border-2 border-indigo-200 py-6 rounded shadow flex items-center justify-center font-bold text-indigo-800">Registers</div>
+                            <div class="col-span-2 bg-slate-200 text-slate-700 py-3 rounded shadow">Instruction / Data Memory</div>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-4 text-center max-w-xs">Hardware blocks realized in Verilog logic mapped to Artix-7 LUTs.</p>
+                    </div>
+                </div>
+
+                <div id="tender-project" class="project-pane hidden grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-1">Data-Driven Tender Tracker</h4>
+                        <div class="text-sm text-slate-500 mb-4">Feb 2024 – April 2024</div>
+                        <ul class="space-y-3 text-slate-700">
+                            <li class="flex items-start gap-2"><span class="text-indigo-500 mt-1">&#x25B8;</span><span>Built an end-to-end automation tool for lead generation, scraping <strong>50,000+ data points</strong>.</span></li>
+                            <li class="flex items-start gap-2"><span class="text-indigo-500 mt-1">&#x25B8;</span><span>Integrated with <strong>Google Sheets API</strong> for live cloud storage.</span></li>
+                            <li class="flex items-start gap-2"><span class="text-indigo-500 mt-1">&#x25B8;</span><span>Improved lead generation accuracy by 100% through automated data cleaning and manipulation using <strong>Pandas</strong>.</span></li>
+                        </ul>
+                        <div class="mt-6 p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Stack</span>
+                            <span class="text-sm text-slate-700">Python, Google Sheets API, Pandas, Selenium</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-center bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                        <h5 class="text-center font-semibold text-slate-700 mb-2">Cumulative Data Points Acquired</h5>
+                        <div class="chart-container">
+                            <canvas id="tenderChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="py-16">
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8">
+            <div>
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                    <span class="text-indigo-500">&#x1F393;</span> Education
+                </h3>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h4 class="text-lg font-bold text-slate-900">Bachelor of Engineering</h4>
+                    <div class="text-indigo-600 mb-2">Electronics and Computer Science</div>
+                    <div class="text-slate-600 mb-4">Shri Ramdeobaba College of Engineering and Management, Nagpur</div>
+                    <div class="flex justify-between items-center border-t border-slate-100 pt-4">
+                        <span class="text-slate-500 font-medium">Timeline: 2023 – 2027</span>
+                        <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded font-bold">CGPA: 8.67 / 10.0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                    <span class="text-indigo-500">&#x1F3C6;</span> Certifications
+                </h3>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200 flex items-center gap-4">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 flex items-center justify-center rounded font-bold">&#x1F4BB;</div>
+                        <div class="font-medium text-slate-800">Google Advanced Data Analytics <span class="text-slate-500 font-normal ml-1">| Google</span></div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200 flex items-center gap-4">
+                        <div class="w-10 h-10 bg-indigo-100 text-indigo-600 flex items-center justify-center rounded font-bold">&#x1F4CA;</div>
+                        <div class="font-medium text-slate-800"><span class="text-slate-500 font-normal ml-1">| IBM</span></div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200 flex items-center gap-4">
+                        <div class="w-10 h-10 bg-green-100 text-green-600 flex items-center justify-center rounded font-bold">&#x1F50D;</div>
+                        <div class="font-medium text-slate-800">Foundations of Data Science <span class="text-slate-500 font-normal ml-1">| Google</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm">
+        <p>Interactive CV App - Designed to summarize reporting structures interactively.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const skillsCtx = document.getElementById('skillsChart').getContext('2d');
+            new Chart(skillsCtx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        'Python/Programming',
+                        'SQL & Databases',
+                        'Deep Learning (CNN)',
+                        'Data Manipulation',
+                        'Hardware/FPGA',
+                        'Data Viz (BI)'
+                    ],
+                    datasets: [{
+                        label: 'Proficiency Level',
+                        data: [10, 9.4, 9, 10, 7.4, 9.8], // Example: update these values to match your actual proficiency
+                        backgroundColor: 'rgba(79, 70, 229, 0.2)',
+                        borderColor: 'rgba(79, 70, 229, 1)',
+                        pointBackgroundColor: 'rgba(79, 70, 229, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(79, 70, 229, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(0,0,0,0.1)' },
+                            grid: { color: 'rgba(0,0,0,0.1)' },
+                            pointLabels: { font: { size: 12 }, color: '#475569' },
+                            ticks: { display: false, max: 100, min: 0 }
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            const impactCtx = document.getElementById('impactChart').getContext('2d');
+            new Chart(impactCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Before Automation', 'After Automation'],
+                    datasets: [{
+                        label: 'Weekly Hours on Data Entry',
+                        data: [25, 5], 
+                        backgroundColor: ['#94a3b8', '#4f46e5'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Hours / Week' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.raw + ' hours/week';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            let chessChartInstance = null;
+            const initChessChart = () => {
+                if(chessChartInstance) return;
+                const ctx = document.getElementById('chessChart').getContext('2d');
+                chessChartInstance = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Random Baseline', 'CNN Top-1', 'CNN Top-5'],
+                        datasets: [{
+                            label: 'Accuracy %',
+                            data: [2.5, 48.7, 81.2],
+                            backgroundColor: ['#cbd5e1', '#6366f1', '#4338ca'],
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: { y: { beginAtZero: true, max: 100, title: { display: true, text: 'Accuracy (%)' } } },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            };
+
+            let tenderChartInstance = null;
+            const initTenderChart = () => {
+                if(tenderChartInstance) return;
+                const ctx = document.getElementById('tenderChart').getContext('2d');
+                tenderChartInstance = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8'],
+                        datasets: [{
+                            label: 'Cumulative Data Points Scraped',
+                            data: [5000, 12000, 20000, 27000, 35000, 42000, 48000, 50000],
+                            borderColor: '#4f46e5',
+                            backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                            fill: true,
+                            tension: 0.3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: { y: { beginAtZero: true, title: { display: true, text: 'Total Rows' } } },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            };
+
+            initChessChart();
+
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const projectPanes = document.querySelectorAll('.project-pane');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    projectPanes.forEach(p => {
+                        p.classList.add('hidden');
+                        p.classList.remove('fade-in');
+                    });
+
+                    btn.classList.add('active');
+                    const targetId = btn.getAttribute('data-target');
+                    const targetPane = document.getElementById(targetId);
+                    
+                    targetPane.classList.remove('hidden');
+                    targetPane.classList.add('fade-in');
+
+                    if (targetId === 'chess-project') initChessChart();
+                    if (targetId === 'tender-project') initTenderChart();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
