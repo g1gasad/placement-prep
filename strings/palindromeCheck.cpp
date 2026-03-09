@@ -22,7 +22,7 @@ string checkPalindrome(string &str){
     return "Yes";
 }
 int main() {
-    string exp="abcddcbaa";
+    string exp="abcddcba";
     string result = checkPalindrome(exp);
     cout << result << endl;
     return 0;
