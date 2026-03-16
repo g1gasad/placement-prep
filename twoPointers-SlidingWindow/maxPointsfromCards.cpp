@@ -1,19 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
 // naive soln working but need better
+void printer(int &num){
+    printf("MaxSum so far: %d\n", num);
+}
 
 int maxPoints(vector<int> &arr, int &k){
     int n=arr.size();
-    int l=0, r=k-1, i=0;
-    int maxSum=0;
-    while(i<n){
-        int sum=0;
-        for(int j=l; j<=r; j++){
-            sum += arr[j%n];
-        }
-        cout << sum << endl;
-        maxSum=max(maxSum, sum);
-        l++; r++; i++;
+    int leftSum, rightSum, maxSum;
+    leftSum = rightSum = maxSum = 0;
+    for(int i=0; i<k; i++){
+        leftSum += arr[i];
+        maxSum = max(maxSum, leftSum);
+        printer(maxSum);
+    }
+    int rightIdx=n-1;
+    for(int j=k-1; j>=0; j--){
+        leftSum -= arr[j];
+        rightSum += arr[rightIdx];
+        maxSum = max(maxSum, leftSum+rightSum);
+        rightIdx--;
+        printer(maxSum);
+
     }
     return maxSum;
 }
