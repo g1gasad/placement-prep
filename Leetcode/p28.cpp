@@ -6,18 +6,22 @@ public:
     int strStr(string haystack, string needle) {
         int n=haystack.size();
         int m=needle.size();
-        int i, j, k;
-        i=j=k=0;
-        while(j<=n-m){
-            if(k==m-1) return i;
-            if(haystack[j]==needle[k]){
-                j++; k++;
+        int i=0, j=0;
+        int first=-1;
+        while(i<n){
+            if(haystack[i]==needle[j]){
+                if(haystack[i]==needle[0]){
+                    first=i;
+                    j++;
+                }
             }
+            else if(j==m) return first;
             else{
-                i++; j=i;
+                j=0;
             }
+            i++;
         }
-        return -1;
+        return first;
     }
 };
 
