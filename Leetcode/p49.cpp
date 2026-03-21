@@ -16,7 +16,7 @@ public:
         for(int i=0; i<n; i++){
             for(int k=i+1; k<n; k++){
                 for(int j=0; j<26; j++){
-                    if(arr[i][j]!=arr[k][j])
+                    // if(arr[i][j]!=arr[k][j])
                 }
             }
         }
