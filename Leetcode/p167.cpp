@@ -1,40 +1,36 @@
-// 167. Two Sum II - Input Array Is Sorted
+// 167. Two Sum II - Input numbersay Is Sorted
 
 #include <bits/stdc++.h>
 using namespace std;
-
-pair<int, int> twoSum(vector<int> &arr, int target)
+vector<int> twoSum(vector<int> &numbers, int target)
 {
-    int n = arr.size();
+    int n = numbers.size();
     int i = 0;
     int j = 1;
+    vector<int> result;
     while ((i < j) && (j < n))
     {
-        cout << i << ", " << j << endl;
-        if (arr[i] + arr[j] == target)
-            return {i, j};
-
-        if (arr[i] + arr[j] < target)
-            j++;
-        
-        if (arr[i] + arr[j] > target){
-            i++;
-            j = i + 1;
+        if (numbers[i] + numbers[j] == target){
+            result.push_back(i+1);
+            result.push_back(j+1);
+            break;
         }
 
-        if (j >= n)
-        {
-            i++;
-            j = i + 1;
+        if (numbers[i] + numbers[j] < target) j++;
+        if (numbers[i] + numbers[j] > target){
+            i++; j = i + 1;
+        }
+        if (j >= n){
+            i++; j = i + 1;
         }
     }
-    return {-1, -1};
+    return result;
 }
 int main()
 {
-    vector<int> ls = {1, 2, 7, 11, 15, 18};
-    int target = 13;
-    pair<int, int> result = twoSum(ls, target);
-    cout << result.first << " " << result.second;
+    vector<int> ls = {1, 3, 4, 4};
+    int target = 8;
+    vector<int> result = twoSum(ls, target);
+    cout << result[0] << " " << result[1];
     return 0;
 }
