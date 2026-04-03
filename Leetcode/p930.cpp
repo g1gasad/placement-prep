@@ -3,9 +3,10 @@ using namespace std;
 class Solution {
 public:
     int atMost(vector<int> nums, int goal){
+        if(goal<0) return 0;
         int n=nums.size();
         int l=0, r=0, sum=0, subArrCount=0;
-        while(r<n){
+        while(r<=n){
             sum += nums[r];
 
             while(sum>goal){
@@ -19,6 +20,7 @@ public:
         return subArrCount;
     }
     int numSubarraysWithSum(vector<int>& nums, int goal) {
+        if(goal<0) return 0;
         return atMost(nums, goal) - atMost(nums, goal-1);
     }
 };
