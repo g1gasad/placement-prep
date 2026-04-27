@@ -27,9 +27,8 @@ pair<Node*, Node*> convertArr2LL(vector<int> &arr){
     Node* mover = head;
 
     for(int i = 1; i < arr.size(); i++){
-        Node* temp = new Node(arr[i]);
+        Node* temp = new Node(arr[i], nullptr, mover);
         mover->next = temp;
-        temp->prev = mover;
         mover = temp;
     }
     tail = mover;
@@ -71,7 +70,7 @@ int main(){
         {-13, -4, -11, -555},
         {-2,0,4,-7,9},
         {1000000, 99999999, -88888888},
-        
+
     };
     for(int i=0; i<arrs.size(); i++){
         cout << "Test case: " << i+1 << endl;
