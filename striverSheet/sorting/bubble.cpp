@@ -1,4 +1,9 @@
 #include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <sstream>
+
 using namespace std;
 void bubble(vector<int>* vec, int n){
     for(int i=0; i<=n-1; i++){
@@ -19,11 +24,20 @@ void bubble(vector<int>* vec, int n){
 
 
 int main() {
-    vector<int> ls = {10, 12, 9, 4, 1};
-    for(auto element:ls) cout << element << " ";
-    cout << endl;
-    bubble(&ls, 5);
-    for(auto element:ls) cout << element << " ";
+    cout << "Enter Evenly Spaced Integers: ";
+    string line;
+    getline(cin, line);
+
+    stringstream ss(line);
+    int temp;
+    vector<int> nums;
+
+    while(ss >> temp){
+        nums.push_back(temp);
+    }
+    int n = nums.size();
+    bubble(&nums, n);
+    for(auto element:nums) cout << element << " ";
 
     return 0;
 }

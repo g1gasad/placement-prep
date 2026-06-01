@@ -25,8 +25,8 @@ void printDivisors(int x){
 int main(){
     int n;
     cout << "Enter a num: ";
-    cin >> n;
-    printDivisors(n);
+    // cin >> n;
+    printDivisors(24);
 
     return 0;
 }

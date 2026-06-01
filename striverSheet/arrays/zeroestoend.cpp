@@ -24,8 +24,7 @@ void moveZeroes(vector<int> &arr, int n)
             } // i-- if arr[i] is 0
             else
             {
-                i--;
-                j--;
+                i--; j--;
             }
         }
         j++;

@@ -8,7 +8,7 @@ int nthPower(int &x, int &n){
     return ans;
 }
 
-// time complexity: O(log [base 2] N)
+// time complexity: O(log-base2-N)
 
 int nthRoot(int &x, int &n){
     int low, mid, high;

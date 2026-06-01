@@ -4,6 +4,7 @@ int iterative_bs(vector<int> &nums, int target){
     int n=nums.size();
     int low=0; int high=n-1;
     int ans=-1;
+    
     while(low<=high){
         int mid=(low+high)/2;
         if(nums[mid]==target) return mid;
@@ -14,7 +15,7 @@ int iterative_bs(vector<int> &nums, int target){
 }
 int main() {
     vector<int> nums={1, 5, 7, 12, 26, 100, 122};
-    int ans = iterative_bs(nums, 26);
+    int ans = iterative_bs(nums, 23);
     if(ans==-1) cout << "not in arr" << endl;
     else cout << ans;
     return 0;

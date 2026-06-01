@@ -13,7 +13,7 @@ int secondLargest(vector<int> *arr, int n){
     return sec;
 }
 int main() {
-    vector<int> ls = {3, 23, 9, 12, 22, 2124, 99};
+    vector<int> ls = {100, 100, 23, 9, 12, 22, 2124, 99};
     int out = secondLargest(&ls, ls.size());
     cout << out << endl;
     return 0;

@@ -2,15 +2,15 @@
 using namespace std;
 string removeDuplicate(string &s)
 {
-    bool notend=true;
+    bool endofstr=false;
     char ch;
-    int i=0, j=0;
+    int i=1, j=0;
     // for(int i=1; i<n; i++){
-    while(notend){
+    while(!endofstr){
         if(s[i]=='\0'){
-            notend=false;
+            endofstr=true;
         }
-        if(s[i]!=s[j]){
+        if(s[j]!=s[i]){
             s[j+1]=s[i];
             j++;
         }
