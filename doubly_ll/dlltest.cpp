@@ -31,7 +31,9 @@ void print(Node* head) {
         cout << head->data << " ";
         head = head->next;
     }
+    cout << endl;
 }
+
 Node* insertAtTail(Node* head, int k) {
     Node* newNode = new Node(k);
     if (head == nullptr) return newNode;
@@ -44,28 +46,16 @@ Node* insertAtTail(Node* head, int k) {
     newNode->back = tail;
     return head;
 }
-Node* reverseDLL(Node* head){
-    if(head==NULL){
-        cout << "Empty head" << endl;
-        return nullptr;
-    }
-    Node* mover=head;
-    while(mover->next!=nullptr){
-        Node* temp=mover->next;
-        mover->next = mover->back;
-        mover->back = temp;
-        head = head->next;
-        mover = head;
-    }
-    head->next = mover->back;
-    head->back = mover->next;
-    return head;    
+Node* insertNodeBeforeHead(Node* head, int k){
+    Node* newHead = new Node(k, head, nullptr);
+    head->back=newHead;
+    return newHead;
 }
 int main() {
-    vector<int> arr = {2, 4, 6, 7, 29};
+    vector<int> arr = {2};
     Node* head = convertArr2DLL(arr);
     print(head);
-    Node* revHead = reverseDLL(head);
-    print(revHead);
+    Node* head1 = insertNodeBeforeHead(head, 8);
+    print(head1);
     return 0;
 }
