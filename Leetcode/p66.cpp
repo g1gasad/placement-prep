@@ -2,31 +2,28 @@
 #include <cmath>
 using namespace std;
 vector<int> plusOne(vector<int>& digits) {
-    float n=digits.size();
-    int num=0;
-    for(int i=0; i<n; i++){
-        // giving here in pow
-        num += digits[i] * pow(10.0, n-1-i);
+    int n=digits.size();
+    int addOne=digits[n-1]+1;
+    if(addOne<=9){
+        digits[n-1] = addOne;
+        return digits;
     }
-    cout << num << endl;
-    num += 1;
-    int temp=0;
-    int k=0;
-    while(num){
-        temp = temp*10 + num%10;
-        num=num/10;
-        k++;
+    digits[n-1]=0;
+    int carry=1;
+    for(int i=n-2; i>=0; i--){
+        int dSum=digits[i]+carry;
+
+        if(dSum>9) carry=1;
+        else carry=0;
+
+        digits[i] = dSum % 10;
     }
-    cout << k << endl;
-    vector<int> result(k);
-    for(int j=0; j++; j<k){
-        result[j]=temp%10;
-        temp=temp/10;
-    }
-    return result;
+    if(carry) digits.insert(digits.begin(), 1);
+    return digits;
 }
+
 int main() {
-    vector<int> digits={1, 2, 9};
+    vector<int> digits={3, 9};
     vector<int> result=plusOne(digits);
     for(auto it:result) cout << it << " ";
     return 0;
