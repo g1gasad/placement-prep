@@ -9,7 +9,6 @@ public:
         int h=haystack.size();
         if(n>h) return -1;
 
-        char ch=needle[0];
         int i=0;
         while(i<=h-n){
             int k=0;
