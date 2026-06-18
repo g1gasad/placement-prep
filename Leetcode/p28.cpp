@@ -4,31 +4,31 @@ using namespace std;
 class Solution {
 public:
     int strStr(string haystack, string needle) {
-        int n=haystack.size();
-        int m=needle.size();
-        int i=0, j=0;
-        int first=-1;
-        while(i<n){
-            if(haystack[i]==needle[j]){
-                if(haystack[i]==needle[0]){
-                    first=i;
-                    j++;
-                }
+        if(needle==haystack) return 0;
+        int n=needle.size();
+        int h=haystack.size();
+        if(n>h) return -1;
+
+        char ch=needle[0];
+        int i=0;
+        while(i<=h-n){
+            int k=0;
+            int j=i;
+            while(needle[k]==haystack[j] && k<n && j<h){
+                k++; j++;
             }
-            else if(j==m) return first;
-            else{
-                j=0;
-            }
+  
+            if(k==n) return i;
             i++;
         }
-        return first;
+        return -1;
     }
 };
 
 int main() {
     Solution sol;
-    string haystack="leetcode";
-    string needle = "leeto";
+    string haystack="truexmebutxmenare";
+    string needle = "xmens";
     int ans = sol.strStr(haystack, needle);
     cout << "first occur is at: " << ans << endl;
 
