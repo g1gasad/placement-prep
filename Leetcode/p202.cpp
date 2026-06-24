@@ -1,28 +1,38 @@
 #include <bits/stdc++.h>
 using namespace std;
 class Solution {
+private:
+    int sumofsqr(int x){
+        int sum=0;
+        while(x){
+            int d=x%10;
+            sum += d*d;
+            x /= 10; 
+        }
+        return sum;
+    }
 public:
     bool isHappy(int n) {
-        int temp=n, sqrSum;
-        while(sqrSum!=1){
-            sqrSum=0;
-            while(temp){
-                int dig=temp%10;
-                sqrSum = sqrSum + (dig*dig);
-                cout << sqrSum;
-                temp = temp / 10;
+        vector<int> hashSet;
+        int result=sumofsqr(n);
+        hashSet.push_back(result);
+
+        while(result!=1){
+            result=sumofsqr(result);
+            for(int i=0; i<hashSet.size(); i++){
+                if(result==hashSet[i]) return false;
             }
-            temp=sqrSum;
+            // cout << result << endl;
+            hashSet.push_back(result);
         }
-        if(sqrSum==1) return true;
-        return false;
+        return true;
     }
 };
 
 int main() {
     Solution sol;
-    bool ans = sol.isHappy(19);
-    if(ans) cout << "ues";
-    else cout << "noep";
+    bool ans = sol.isHappy(21);
+    // if(ans) cout << "yes";
+    // else cout << "noep";
     return 0;
 }

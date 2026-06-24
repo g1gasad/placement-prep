@@ -1,1 +1,2 @@
-~(ch&1) && ~(num&1)
+; k++){
+        ListNode* head1
