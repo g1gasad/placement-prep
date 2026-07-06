@@ -1,2 +1,1 @@
-; k++){
-        ListNode* head1
+wordLen[i].first + " "
