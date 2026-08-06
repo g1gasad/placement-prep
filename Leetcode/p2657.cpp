@@ -4,19 +4,13 @@ class Solution {
 public:
     vector<int> findThePrefixCommonArray(vector<int>& A, vector<int>& B) {
         int n=A.size();
-        vector<int> C(n);
-        int hash_A[n+1]={0}, hash_B[n+1]={0};
+        vector<int> C;
+        int hasha[51]={0}, hashb[51]={0};
+        hasha[A[0]]++; hashb[B[0]]++; 
+        if(A[0]==B[0]) C.push_back(1);
+        else C.push_back(0);
 
-        for(int i=0; i<n; i++){
-            int cnt=0;
-            hash_A[A[i]]++; 
-            hash_B[B[i]]++;
-            for(int j=0; j<=i; j++){
-                if(hash_A[A[j]]==hash_B[B[j]]) cnt++;
-            }
-            C[i]=cnt;
-        }
-        return C;
+        for(int i=1; i)
     }
 };
 int main() {
